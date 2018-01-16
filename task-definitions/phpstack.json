@@ -1,0 +1,35 @@
+{
+  "containerDefinitions": [
+    {
+      "name": "mysql",
+      "image": "mysql",
+      "portMappings": [
+        {
+          "containerPort": 3306,
+          "hostPort": 3306
+        }
+      ],
+      "environment": [
+        {
+          "name": "MYSQL_DATABASE",
+          "value": "name"
+        },
+        {
+          "name": "MYSQL_USER",
+          "value": "user"
+        },
+        {
+          "name": "MYSQL_PASSWORD",
+          "value": "secret"
+        },
+        {
+          "name": "MYSQL_ROOT_PASSWORD",
+          "value": "root"
+        }
+      ],
+      "memory": 1000,
+      "essential": true
+    }
+  ],
+  "family": "phpstack"
+}
