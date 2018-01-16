@@ -32,7 +32,7 @@
     },
     {
       "name": "php-fpm",
-      "image": "php",
+      "image": "php:fpm",
       "portMappings": [
         {
           "containerPort": 9000
