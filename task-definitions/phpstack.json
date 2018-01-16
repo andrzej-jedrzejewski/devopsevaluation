@@ -27,7 +27,7 @@
           "value": "root"
         }
       ],
-      "memory": 1000,
+      "memory": 500,
       "essential": true
     },
     {
@@ -41,7 +41,7 @@
       "links": [
           "mysql"
       ],    
-      "memory": 1000,
+      "memory": 500,
       "essential": true  
     },
     {
@@ -60,7 +60,7 @@
       "links": [
         "php-fpm"
       ],
-      "memory": 1000,
+      "memory": 500,
       "essential": true
     },
     {
