@@ -62,6 +62,18 @@
       ],
       "memory": 1000,
       "essential": true
+    },
+    {
+      "name": "node",
+      "image": "294108764179.dkr.ecr.eu-central-1.amazonaws.com/node-sample",
+      "memory": 500,
+      "essential": true,
+      "portMappings": [
+        {
+          "containerPort": 8888,
+          "hostPort":8888
+        }
+      ]
     }
   ],
   "family": "phpstack"
