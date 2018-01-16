@@ -29,6 +29,20 @@
       ],
       "memory": 1000,
       "essential": true
+    },
+    {
+      "name": "php-fpm",
+      "image": "php",
+      "portMappings": [
+        {
+          "containerPort": 9000
+        }
+      ],
+      "links": [
+          "mysql"
+      ],    
+      "memory": 1000,
+      "essential": true  
     }
   ],
   "family": "phpstack"
