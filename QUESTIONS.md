@@ -31,3 +31,6 @@ Please, explain also your choice.
 
 
 4. What is the easiest way to scale up instance group in GCP?
+	```
+	Using AutoScaling.
+	```
