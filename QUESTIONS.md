@@ -49,6 +49,6 @@ a) WebBrowser cache, e.g graphic files (banners, buttons, icons, ad-files etc.),
 
 
 #4. What is the easiest way to scale up instance group in GCP?
-	```
+	
 	Using AutoScaling.
-	```
+	
