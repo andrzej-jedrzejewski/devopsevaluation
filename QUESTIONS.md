@@ -20,10 +20,10 @@ The draft of the architecture:
 It's a temporary storage. It can be used to store frequently access data.
 Server (application) cache:
 
-	* File: cached objects in the filesystem
-	* Database (mysql): cached objects are stored in table
-	* Mamcached
-	* Redis
+* File: cached objects in the filesystem
+* Database (mysql): cached objects are stored in table
+* Mamcached
+* Redis
 
 User cache:
 	* WebBrowser cache, e.g graphic files (banners, buttons, icons, ad-files etc.), photographs, script files, and even HTML pages.
@@ -33,16 +33,15 @@ User cache:
 
 In both cases, I'll go with Kubernetes. Kubernetes itself is complicated but thanks that it is also flexible. It is the most mature and most popular solution in the market. Kubernetes can be deployed within ansible (if we prepare ansible role for slave we can very quickly add new physical nodes) or kubeadm. Kubernetes offers inbuilt logging and monitoring tools. From the DevOps point of view:
 
-	* Scalability: deployments can be scaled in or out at any time.
-	* Visibility: identify completed, in-process, and failing deployments with status querying capabilities.
-	* Time savings.
-	* Version Control.
-	* Horizontal autoscaling.
-	* Rolling updates.
-	* Canary deployments.
-	* It supports stateless, stateful, and data-processing workloads.
+* Scalability: deployments can be scaled in or out at any time.
+* Visibility: identify completed, in-process, and failing deployments with status querying capabilities.
+* Time savings.
+* Version Control.
+* Horizontal autoscaling.
+* Rolling updates.
+* Canary deployments.
+* It supports stateless, stateful, and data-processing workloads.
 
 ### 4. What is the easiest way to scale up instance group in GCP?
 
-	*Using AutoScaling.
-	
+*Using AutoScaling.
