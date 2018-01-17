@@ -46,8 +46,158 @@ In both cases, I'll go with Kubernetes. Kubernetes itself is complicated but tha
 
 * Using AutoScaling.
 
-### 5. Translate attached configuration (docker-compose.yml) to Amazon ECS service by creating
-ECS tasks. As a stanza we would like a json file that, when used on ECS, will create proper
-configuration.
+### 5. Translate attached configuration (docker-compose.yml) to Amazon ECS service by creating ECS tasks. As a stanza we would like a json file that, when used on ECS, will create proper configuration.
 
-![ecstask](https://github.com/andrzej-jedrzejewski/devopsevaluation/blob/e176385d78f63199ec8162d66254315ce4bae7ed/task-definitions/phpstack.json?)
+```json
+{
+  "containerDefinitions": [
+    {
+      "name": "mysql",
+      "image": "mysql",
+      "volumesFrom": [
+        {
+          "sourceContainer": "debian"
+        }
+      ],
+      "portMappings": [
+        {
+          "containerPort": 3306,
+          "hostPort": 3306
+        }
+      ],
+      "environment": [
+        {
+          "name": "MYSQL_DATABASE",
+          "value": "name"
+        },
+        {
+          "name": "MYSQL_USER",
+          "value": "user"
+        },
+        {
+          "name": "MYSQL_PASSWORD",
+          "value": "secret"
+        },
+        {
+          "name": "MYSQL_ROOT_PASSWORD",
+          "value": "root"
+        }
+      ],
+      "memory": 500,
+      "essential": true
+    },
+    {
+      "name": "php-fpm",
+      "image": "php:fpm",
+      "volumesFrom": [
+        {
+          "sourceContainer": "debian"
+        }
+      ],
+      "portMappings": [
+        {
+          "containerPort": 9000
+        }
+      ],
+      "links": [
+        "mysql"
+      ],
+      "memory": 500,
+      "essential": true
+    },
+    {
+      "name": "nginx",
+      "image": "nginx",
+      "volumesFrom": [
+        {
+          "sourceContainer": "debian"
+        }
+      ],
+      "portMappings": [
+        {
+          "containerPort": 80,
+          "hostPort": 80
+        },
+        {
+          "containerPort": 443,
+          "hostPort": 443
+        }
+      ],
+      "links": [
+        "php-fpm"
+      ],
+      "memory": 500,
+      "essential": true
+    },
+    {
+      "name": "node",
+      "image": "294108764179.dkr.ecr.eu-central-1.amazonaws.com/node-sample",
+      "volumesFrom": [
+        {
+          "sourceContainer": "debian"
+        }
+      ],
+      "memory": 500,
+      "essential": true,
+      "portMappings": [
+        {
+          "containerPort": 8888,
+          "hostPort": 8888
+        }
+      ]
+    },
+    {
+      "name": "debian",
+      "image": "294108764179.dkr.ecr.eu-central-1.amazonaws.com/debian:jessie-slim",
+      "memory": 500,
+      "mountPoints": [
+        {
+          "sourceVolume": "nginx",
+          "containerPath": "/var/log/nginx"
+        },
+        {
+          "sourceVolume": "xdebug",
+          "containerPath": "/var/log/xdebug"
+        },
+        {
+          "sourceVolume": "mysql_logs",
+          "containerPath": "/var/log/mysql"
+        },
+        {
+          "sourceVolume": "mysql_data",
+          "containerPath": "/var/lib/mysql"
+        }
+      ],
+      "essential": false
+    }
+  ],
+  "family": "phpstack",
+  "volumes": [
+    {
+      "name": "nginx",
+      "host": {
+        "sourcePath": "/tmp/logs/nginx"
+      }
+    },
+    {
+      "name": "xdebug",
+      "host": {
+        "sourcePath": "/tmp/logs/xdebug"
+      }
+    },
+        {
+      "name": "mysql_logs",
+      "host": {
+        "sourcePath": "/tmp/logs/mysql/"
+      }
+    },
+    {
+      "name": "mysql_data",
+      "host": {
+        "sourcePath": "/tmp/data/mysql"
+      }
+    }
+  ]
+}
+```
+
