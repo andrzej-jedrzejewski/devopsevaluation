@@ -44,4 +44,10 @@ In both cases, I'll go with Kubernetes. Kubernetes itself is complicated but tha
 
 ### 4. What is the easiest way to scale up instance group in GCP?
 
-*Using AutoScaling.
+* Using AutoScaling.
+
+### 5. Translate attached configuration (docker-compose.yml) to Amazon ECS service by creating
+ECS tasks. As a stanza we would like a json file that, when used on ECS, will create proper
+configuration.
+
+![ecstask](https://github.com/andrzej-jedrzejewski/devopsevaluation/blob/e176385d78f63199ec8162d66254315ce4bae7ed/task-definitions/phpstack.json?)
