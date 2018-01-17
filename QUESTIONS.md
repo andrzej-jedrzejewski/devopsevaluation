@@ -9,6 +9,8 @@ In front of the Web Tier we can place load balancer (we can use sticky sessions 
 as a separate service for caching) + CDN (to serve static files) and Route 53 (geolocation). It should decrease the webapp load. 
 Web Tier: nginx+laravel + Auto Scaling based on CPU usage
 Database Tier: RDS(mysql) + read replicas
+
+To verify architecture we can use jmeter + blazeMeter.
 The draft of the architecture:
 
 ![Draft of Architecture](images/ApplicationArchitecture.png?raw=true "Draft of Architecture")
