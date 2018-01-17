@@ -39,10 +39,10 @@
         }
       ],
       "links": [
-          "mysql"
-      ],    
+        "mysql"
+      ],
       "memory": 500,
-      "essential": true  
+      "essential": true
     },
     {
       "name": "nginx",
@@ -71,10 +71,60 @@
       "portMappings": [
         {
           "containerPort": 8888,
-          "hostPort":8888
+          "hostPort": 8888
         }
       ]
+    },
+    {
+      "name": "debian",
+      "image": "294108764179.dkr.ecr.eu-central-1.amazonaws.com/debian:jessie-slim",
+      "memory": 500,
+      "mountPoints": [
+        {
+          "sourceVolume": "nginx",
+          "containerPath": "/var/log/nginx"
+        },
+        {
+          "sourceVolume": "xdebug",
+          "containerPath": "/var/log/xdebug"
+        },
+        {
+          "sourceVolume": "mysql_logs",
+          "containerPath": "/var/log/mysql"
+        },
+        {
+          "sourceVolume": "mysql_data",
+          "containerPath": "/var/lib/mysql"
+        }
+      ],
+      "essential": false
     }
   ],
-  "family": "phpstack"
+  "family": "phpstack",
+  "volumes": [
+    {
+      "name": "nginx",
+      "host": {
+        "sourcePath": "/tmp/logs/nginx"
+      }
+    },
+    {
+      "name": "xdebug",
+      "host": {
+        "sourcePath": "/tmp/logs/xdebug"
+      }
+    },
+        {
+      "name": "mysql_logs",
+      "host": {
+        "sourcePath": "/tmp/logs/mysql/"
+      }
+    },
+    {
+      "name": "mysql_data",
+      "host": {
+        "sourcePath": "/tmp/data/mysql"
+      }
+    }
+  ]
 }
