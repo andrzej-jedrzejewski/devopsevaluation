@@ -18,23 +18,19 @@ The draft of the architecture:
 #2. What is cache? What kind of caches do you know and what are the differences between them?
 
 It's a temporary storage. It can be used to store frequently access data.
-
 Server (application) cache:
-
-a) File: cached objects in the filesystem
-b) Database (mysql): cached objects are stored in table
-c) Mamcached
-d) Redis
+	a) File: cached objects in the filesystem
+	b) Database (mysql): cached objects are stored in table
+	c) Mamcached
+	d) Redis
 
 User cache:
+	a) WebBrowser cache, e.g graphic files (banners, buttons, icons, ad-files etc.), photographs, script files, and even HTML pages.
 
-a) WebBrowser cache, e.g graphic files (banners, buttons, icons, ad-files etc.), photographs, script files, and even HTML pages.
 
+#3. Which tool for container orchestration will you chose for the environment that consist of 10 physical nodes. Do the same for 100 physical nodes as well. Please, explain also your choice.
 
-#3. Which tool for container orchestration will you chose for the environment that consist of 10 physical nodes. Do the same for 100 physical nodes as well. 
-	Please, explain also your choice.
-
-	In both cases, I'll go with Kubernetes. Kubernetes itself is complicated but thanks that it is also flexible. It is the most mature and most popular solution in the market. Kubernetes can be deployed within ansible (if we prepare ansible role for slave we can very quickly add new physical nodes) or kubeadm. Kubernetes offers inbuilt logging and monitoring tools. From the DevOps point of view:
+In both cases, I'll go with Kubernetes. Kubernetes itself is complicated but thanks that it is also flexible. It is the most mature and most popular solution in the market. Kubernetes can be deployed within ansible (if we prepare ansible role for slave we can very quickly add new physical nodes) or kubeadm. Kubernetes offers inbuilt logging and monitoring tools. From the DevOps point of view:
 	a) Scalability: deployments can be scaled in or out at any time.
 	b) Visibility: identify completed, in-process, and failing deployments with status querying capabilities.
 	c) Time savings.
@@ -44,11 +40,6 @@ a) WebBrowser cache, e.g graphic files (banners, buttons, icons, ad-files etc.),
 	g) Canary deployments.
 	h) It supports stateless, stateful, and data-processing workloads.
 
-
-
-
-
 #4. What is the easiest way to scale up instance group in GCP?
-	
 	Using AutoScaling.
 	
