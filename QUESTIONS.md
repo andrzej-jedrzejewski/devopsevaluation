@@ -15,24 +15,20 @@ The draft of the architecture:
 
 ![Draft of Architecture](images/ApplicationArchitecture.png?raw=true "Draft of Architecture")
 
-
-
-
-
-
-
-
-
 #2. What is cache? What kind of caches do you know and what are the differences between them?
 
+It's a temporary storage. It can be used to store frequently access data.
 
+Server (application) cache:
 
+a) File: cached objects in the filesystem
+b) Database (mysql): cached objects are stored in table
+c) Mamcached
+d) Redis
 
+User cache:
 
-
-
-
-
+a) WebBrowser cache, e.g graphic files (banners, buttons, icons, ad-files etc.), photographs, script files, and even HTML pages.
 
 
 #3. Which tool for container orchestration will you chose for the environment that consist of 10 physical nodes. Do the same for 100 physical nodes as well. 
