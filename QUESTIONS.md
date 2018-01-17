@@ -5,10 +5,10 @@ I assume that we have 10k users around the world (USA, Europe, Asia) and also we
 I will start with testing initial setup with jmeter to be sure that it can handle the 100 concurrent users.
 If this works I will move forward. I will split web application and database to separate servers/containers. 
 As a base instance I will choose t2.large and I will go with horizontal scaling.
-In front of the Web Tier we can place load balancer (we can use sticky sessions or use memchache/redis 
+* In front of the Web Tier we can place load balancer (we can use sticky sessions or use memchache/redis 
 as a separate service for caching) + CDN (to serve static files) and Route 53 (geolocation). It should decrease the webapp load. 
-Web Tier: nginx+laravel + Auto Scaling based on CPU usage
-Database Tier: RDS(mysql) + read replicas
+* Web Tier: nginx+laravel + Auto Scaling based on CPU usage
+* Database Tier: RDS(mysql) + read replicas
 
 To verify architecture we can use jmeter + blazeMeter.
 The draft of the architecture:
