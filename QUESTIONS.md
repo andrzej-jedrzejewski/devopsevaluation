@@ -26,7 +26,20 @@ Server (application) cache:
 * Redis
 
 User cache:
-	* WebBrowser cache, e.g graphic files (banners, buttons, icons, ad-files etc.), photographs, script files, and even HTML pages.
+* WebBrowser cache, e.g graphic files (banners, buttons, icons, ad-files etc.), photographs, script files, and even HTML pages.
+
+Edge cache
+* This is realated to the concept of CDN. We can cache, e.g. object from s3 bucket. 
+
+Static cache:
+* There is no update or insert into the cache while it processes the transformation (read only).
+* It is responsible for caching static objects.
+
+Dynamic cache:
+* We can insert or update objects in the cache when we pass the objects (read/write).
+* It is responsible for caching dynamically generated content.
+* It is more complex than static caching and require information about application itself.
+
 
 
 ### 3. Which tool for container orchestration will you chose for the environment that consist of 10 physical nodes. Do the same for 100 physical nodes as well. Please, explain also your choice.
