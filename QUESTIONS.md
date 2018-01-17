@@ -61,6 +61,11 @@ In both cases, I'll go with Kubernetes. Kubernetes itself is complicated but tha
 
 ### 5. Translate attached configuration (docker-compose.yml) to Amazon ECS service by creating ECS tasks. As a stanza we would like a json file that, when used on ECS, will create proper configuration.
 
+In the repository there are two docker images (node-samle, debian) that contains customize images. Please check Readme in each folder.  
+To register task definition you can use following command:
+```
+aws ecs register-task-definition --cli-input-json file:////pathTo/phpstack.json
+```
 ```json
 {
   "containerDefinitions": [
